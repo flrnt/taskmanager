@@ -1,20 +1,7 @@
 Rails.application.routes.draw do
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  get 'tasks/index'
+  get 'index' => "tasks#index"
 
   get 'tasks/show'
 
