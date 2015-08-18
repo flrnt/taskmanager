@@ -1,24 +1,28 @@
 class TasksController < ApplicationController
-  def index
+  def index # GET /tasks
     @tasks = Task.all
   end
 
-  def show
+  def show # GET /tasks/:id
     @task = Task.find(params[:id])
   end
 
-  def new
+  def new # GET /tasks/new
+    @task = Task.new
   end
 
-  def create
+  def create # POST /tasks
+    @task = Task.new(params[:task])
+    @task.save
   end
 
-  def edit
+  def edit # GET /tasks/:id/edit
+    @task = Task.find(params[:id])
   end
 
-  def update
+  def update # PATCH /tasks/:id
   end
 
-  def destroy
+  def destroy # DELETE /tasks/:id
   end
 end
