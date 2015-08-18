@@ -12,8 +12,9 @@ class TasksController < ApplicationController
   end
 
   def create # POST /tasks
-    @task = Task.new(params[:task])
+    @task = Task.new(task_params)
     @task.save
+    redirect_to tasks_path(@task)
   end
 
   def edit # GET /tasks/:id/edit
@@ -21,8 +22,22 @@ class TasksController < ApplicationController
   end
 
   def update # PATCH /tasks/:id
+    @task = Task.find(params[:id])
+    @task.update(task_params)
+    redirect_to tasks_path(@task)
   end
 
   def destroy # DELETE /tasks/:id
+    @task = Task.find(params[:id])
+    @task.destroy
+    redirect_to tasks_path
   end
+
+
+  private
+
+  def task_params
+    params.require(:task).permit(:name, :description, :status)
+  end
+
 end

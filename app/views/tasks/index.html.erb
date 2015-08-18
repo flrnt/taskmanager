@@ -1,6 +1,5 @@
 <h1>My tasks</h1>
 
-
 <ul>
   <% @tasks.each do |task| %>
     <li>
@@ -9,8 +8,10 @@
      <%= task.status %>
      </li>
      <%= link_to "details", task_path(task) %>
-     <%= link_to "edit", "#" %>
-     <%= link_to "delete", "#" %>
+     <%= link_to "edit", edit_task_path(task) %>
+     <%= link_to "delete", task_path(task),
+           method: :delete,
+           data: { confirm: "Are you sure?" } %>
   <% end %>
 </ul>
 

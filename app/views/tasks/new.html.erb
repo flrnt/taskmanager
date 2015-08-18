@@ -1,18 +1,13 @@
 <h1>New task</h1>
 
-<form action="/tasks/new" method="get">
+<%= form_for(@task) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.label :status %>
+  <%= f.text_field :status %>
+  <%= f.submit %>
+<% end %>
 
-  <label for="name">Name: </label>
-  <input type="text" name="task[name]" id="name">
-
-  <label for="description">Description: </label>
-  <input type="text" name="task[description]" id="description">
-
-  <select name="task[status]" id="status">
-    <option value="false">pending</option>
-    <option value="true">done</option>
-  </select>
-
-  <input type="submit" value="Create" class="btn btn-primary">
-
-</form>
+<%= link_to "Tasks list", tasks_path %>
